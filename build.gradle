@@ -17,6 +17,7 @@ version = '2.0.0-SNAPSHOT'
 group = "com.github.spotbugs"
 def spotBugsVersion = '4.0.0-beta1'
 def slf4jVersion = '1.8.0-beta4'
+def saxonVersion = '9.9.1-2'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -59,6 +60,7 @@ task processVersionFile(type: WriteProperties) {
 
   property 'spotbugs-version', spotBugsVersion
   property 'slf4j-version', slf4jVersion
+  property 'saxon-version', saxonVersion
 }
 tasks.processResources.dependsOn processVersionFile
 

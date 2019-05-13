@@ -132,6 +132,10 @@ public class SpotBugsPlugin extends AbstractCodeQualityPlugin<SpotBugsTask> {
         return loadVersion("slf4j-version");
     }
 
+    String loadSaxonVersion() {
+        return loadVersion("saxon-version");
+    }
+
     private String loadVersion(String name) {
         URL url = SpotBugsPlugin.class.getClassLoader().getResource("spotbugs-gradle-plugin.properties");
         try (InputStream input = url.openStream()) {
@@ -187,6 +191,7 @@ public class SpotBugsPlugin extends AbstractCodeQualityPlugin<SpotBugsTask> {
         configuration.defaultDependencies((DependencySet dependencies) -> {
             dependencies.add(project.getDependencies().create("org.slf4j:slf4j-simple:" + loadSlf4jVersion()));
             dependencies.add(project.getDependencies().create("com.github.spotbugs:spotbugs:" + extension.getToolVersion()));
+            dependencies.add(project.getDependencies().create("net.sf.saxon:Saxon-HE:" + loadSaxonVersion()));
         });
     }
 
